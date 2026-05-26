@@ -1,0 +1,368 @@
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: whitesmoke;
+  background: darkgray;
+  line-height: 1.6;
+  position: relative;
+  z-index: 0;
+}
+
+/* Video Background */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Header and Navigation */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  background-color: black;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  z-index: 1001;
+}
+
+.logo img {
+  height: 40px;
+}
+
+/* Mobile Navbar */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100%;
+  width: 250px;
+  background-color: black;
+  padding-top: 5rem;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.navbar.active {
+  right: 0;
+}
+
+.navbar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  list-style: none;
+  padding: 0 1.5rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #ccc;
+  font-weight: bold;
+}
+
+/* Desktop Navbar */
+@media screen and (min-width: 769px) {
+  .navbar {
+    position: static;
+    flex-direction: row;
+    height: auto;
+    width: auto;
+    padding: 0;
+    right: auto;
+    background: none;
+    align-items: center;
+  }
+
+  .navbar ul {
+    flex-direction: row;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .navbar a {
+    color: white;
+    font-weight: bold;
+  }
+
+  .menu-toggle,
+  .menu-overlay {
+    display: none !important;
+  }
+}
+
+/* Burger menu */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+  z-index: 1002;
+}
+
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+.menu-overlay.active {
+  display: block;
+}
+
+/* ===== Gallery Page Specific Styles ===== */
+.gallery-content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  color: whitesmoke;
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-content h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Responsive gallery grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* ===== Other Stuff / Works page specific styles ===== */
+
+.other-content {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  color: whitesmoke;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.stuff-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.stuff-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-width: 150px;
+}
+
+.stuff-item:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #ffd700; /* gold-ish highlight */
+}
+
+.demo-reel-section h2 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.demo-reel-section video {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+/* ===== Planet-style Reference Page ===== */
+.reference-container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  z-index: 1;
+  position: relative;
+  color: white;
+}
+
+.reference-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.planet-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+.planet {
+  background: radial-gradient(circle at 30% 30%, #444, #111);
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.planet:hover {
+  transform: scale(1.1) rotate(3deg);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.planet img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.5rem;
+}
+
+.planet span {
+  color: #f0f0f0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 768px) {
+  .planet {
+    width: 120px;
+    height: 120px;
+  }
+
+  .planet img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .planet span {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .stuff-section {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stuff-item {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+/* Responsive padding for smaller screens */
+@media screen and (max-width: 480px) {
+  .gallery-content {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Blog Content Layout */
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.blog-post img.pogi1 {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  border-radius: 10px;
+}
+
+.lgnd {
+  font-size: 1rem;
+  text-indent: 2em;
+  margin-bottom: 1rem;
+  color: #f5f5f5;
+}
+
+/* Footer */
+footer {
+  background-color: #111;
+  color: #ccc;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+}
+
